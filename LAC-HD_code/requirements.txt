@@ -1,0 +1,8 @@
+# Python >= 3.10. Dependency ranges assembled from source imports; original pip freeze was not supplied.
+# Install a CUDA-compatible PyTorch build for your GPU before this file.
+torch>=2.3,<3
+transformers>=4.51,<5
+tqdm>=4.66,<5
+numpy>=1.26,<3
+scikit-learn>=1.4,<2
+PyYAML>=6,<7

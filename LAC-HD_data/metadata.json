@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "dataset_name": "LAC-HD token annotations for HaluEval-Dialogue",
+  "source_repository": "https://github.com/RUCAIBox/HaluEval",
+  "source_file": "data/dialogue_data.json",
+  "source_file_sha256": "523d8ae99d36474ee79994a1b35c61f5f1566739a3abe9e302a1feadecede54c",
+  "source_order": "original record order, zero-based; do not sort source records",
+  "annotation_input_sha256": "68df69007f6517e4fc138aefe672941be3bcf81f10f23b8e2bd8627869dfd648",
+  "source_candidate_responses": 20000,
+  "retained_responses": 19829,
+  "negative_responses": 10000,
+  "positive_responses": 9829,
+  "excluded_candidates": 171,
+  "source_tokenizer": "Qwen/Qwen3-4B inferred from supplied generation script DEFAULT_MODEL_PATH",
+  "tokenizer_revision": "not recorded in supplied project",
+  "tokenizer_operation": "encode(answer, add_special_tokens=False); decode each token separately with skip_special_tokens=False, clean_up_tokenization_spaces=False",
+  "annotation_pipeline": {
+    "protocol_source": "Author-supplied paper Appendix A; supersedes older local notes",
+    "preannotation_model": "GPT-5.6-Sol",
+    "preannotated_hallucinated_candidates": 10000,
+    "human_reviewers": 2,
+    "human_review_mode": "Independent review of every candidate token label and span boundary against supplied knowledge and dialogue history",
+    "corrections": [
+      "missed hallucinations",
+      "false positive labels",
+      "span boundary errors"
+    ],
+    "disagreement_resolution": "Discuss using the shared annotation guidelines",
+    "reviewed_reference_responses": 10000,
+    "reference_token_labels": "Both reviewers confirm source-derived all-zero labels",
+    "filtering_order": "Before data splitting",
+    "excluded_candidates": 171,
+    "exclusion_reasons": [
+      "labels remain unresolved",
+      "data quality prevents reliable annotation"
+    ],
+    "retained_hallucinated_candidates": 9829,
+    "annotation_reference_use": "Auxiliary aid only; cannot override supplied knowledge",
+    "detector_reference_use": "References are separate examples; not additional inputs when scoring paired candidates"
+  },
+  "coordinates": "zero-based half-open Python Unicode codepoint offsets in concatenated source token decodes; not UTF-8 bytes and not JavaScript UTF-16 indices",
+  "quality": {
+    "source_token_decode_mismatch_records": 22,
+    "positive_responses_with_all_zero_token_labels": 536,
+    "original_manifest_checksum_matches_current_annotation_bytes": false,
+    "positive_responses_with_all_zero_token_labels_scope": "entire retained dataset, not test-only"
+  },
+  "frozen_split": {
+    "train": {
+      "num_groups": 9000,
+      "num_samples": 17847,
+      "num_negative_samples": 9000,
+      "num_positive_samples": 8847,
+      "num_source_tokens": 391543,
+      "num_positive_source_tokens": 42659
+    },
+    "dev": {
+      "num_groups": 500,
+      "num_samples": 991,
+      "num_negative_samples": 500,
+      "num_positive_samples": 491,
+      "num_source_tokens": 21589,
+      "num_positive_source_tokens": 2266
+    },
+    "test": {
+      "num_groups": 500,
+      "num_samples": 991,
+      "num_negative_samples": 500,
+      "num_positive_samples": 491,
+      "num_source_tokens": 21256,
+      "num_positive_source_tokens": 2227
+    }
+  },
+  "legacy_split": {
+    "train": {
+      "num_groups": 9500,
+      "num_samples": 18838,
+      "num_negative_samples": 9500,
+      "num_positive_samples": 9338,
+      "num_source_tokens": 412799,
+      "num_positive_source_tokens": 44886
+    },
+    "dev": {
+      "num_groups": 500,
+      "num_samples": 991,
+      "num_negative_samples": 500,
+      "num_positive_samples": 491,
+      "num_source_tokens": 21589,
+      "num_positive_source_tokens": 2266
+    }
+  },
+  "redistribution": "Package contains derived labels, coordinates, lengths, IDs and hashes; no original response text, source token text or token IDs.",
+  "annotation_guidelines": {
+    "primary_factual_evidence": "supplied knowledge",
+    "context_evidence": "dialogue history resolves context and references",
+    "external_world_knowledge": "excluded",
+    "label_1": "incorrect, fabricated, unsupported or contradictory factual content",
+    "label_0": "all other tokens",
+    "span_rule": "smallest contiguous content-bearing spans; include erroneous entities, dates, numbers, attributes and relations",
+    "relation_rule": "mark content-bearing tokens of incorrect relation",
+    "function_words_and_punctuation": "normally 0",
+    "hedging": "does not exempt an unsupported factual claim",
+    "token_sequence": "unchanged; exactly one binary label per supplied token"
+  },
+  "paper_test_response_labels": {
+    "shared_test_responses": 991,
+    "source_positive": 491,
+    "source_negative": 500,
+    "positive_to_negative_after_revision_and_alignment": 28,
+    "negative_to_positive": 0,
+    "final_positive": 463,
+    "final_negative": 528,
+    "aggregation": "any positive label among valid scored tokens",
+    "shared_across": "all backbones and methods",
+    "labels_file": "evaluation/test_response_labels.jsonl",
+    "packaging_check": "Source-token aggregate and changed IDs match these counts; GPU alignment not rerun"
+  }
+}

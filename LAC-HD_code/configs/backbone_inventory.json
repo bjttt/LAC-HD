@@ -1,0 +1,16 @@
+{
+  "available_backbones": [
+    "Qwen/Qwen3-4B",
+    "Qwen/Qwen3-8B",
+    "meta-llama/Llama-2-7b-hf"
+  ],
+  "third_backbone": {
+    "status": "implementation added; CPU tensor tests passed; full training not run",
+    "model_name": "meta-llama/Llama-2-7b-hf",
+    "configuration": "configs/llama2_7b_frozen_90_5_5.json",
+    "head": "Code/llama7b_confidence_head.py",
+    "confirmed_by_user": true
+  },
+  "reported_main_seed": 42,
+  "additional_main_method_seeds": "not recorded; not fabricated"
+}

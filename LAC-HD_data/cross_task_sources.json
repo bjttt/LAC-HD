@@ -1,0 +1,44 @@
+[
+  {
+    "name": "qa",
+    "source_file": "qa_data.json",
+    "valid_source_rows": 10000,
+    "response_count": 20000,
+    "source_file_sha256": "ef2b9798c6defbf5041f9b814ae0139d9fe934d16e0c2760e20522779d5d6110",
+    "invalid_source_rows": [],
+    "source_repository": "https://github.com/RUCAIBox/HaluEval",
+    "upstream_revision": "not recorded",
+    "selection_file": "cross_task/qa_selected_source_rows.jsonl",
+    "original_text_bundled": false
+  },
+  {
+    "name": "summarization",
+    "source_file": "summarization_data.json",
+    "valid_source_rows": 5702,
+    "response_count": 11404,
+    "source_file_sha256": "5b41898067717828f61f5b524e7614dc903b6bb074a4fa804e86c626b447b451",
+    "invalid_source_rows": [
+      {
+        "source_row_index": 5702,
+        "reason": "supplied_source_line_is_incomplete_json",
+        "selected": false
+      }
+    ],
+    "source_repository": "https://github.com/RUCAIBox/HaluEval",
+    "upstream_revision": "not recorded",
+    "selection_file": "cross_task/summarization_selected_source_rows.jsonl",
+    "original_text_bundled": false
+  },
+  {
+    "name": "general",
+    "source_file": "general_data.json",
+    "valid_source_rows": 4507,
+    "response_count": 4507,
+    "source_file_sha256": "73302cd97666b808fb94b5d8a4a2c924049c9484e609017a2f808c4a6d539219",
+    "invalid_source_rows": [],
+    "source_repository": "https://github.com/RUCAIBox/HaluEval",
+    "upstream_revision": "not recorded",
+    "selection_file": "cross_task/general_selected_source_rows.jsonl",
+    "original_text_bundled": false
+  }
+]

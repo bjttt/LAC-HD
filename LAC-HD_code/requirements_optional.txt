@@ -1,0 +1,8 @@
+# Optional baselines and plotting only.
+-r requirements.txt
+-r benchmark/requirements_sota_reproduction.txt
+datasets>=2.18
+matplotlib>=3.8
+openai>=1.0
+swanlab
+# UQ Head also requires separately obtaining llm-uncertainty-head and lm-polygraph.

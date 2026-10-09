@@ -1,0 +1,4 @@
+# Llama tokenizer conversion dependencies, in addition to the core environment.
+-r requirements.txt
+sentencepiece>=0.2,<1
+protobuf>=4,<7

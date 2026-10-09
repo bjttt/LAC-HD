@@ -1,0 +1,57 @@
+hydra:
+  run:
+    dir: ${output_dir}
+
+model:
+  pretrained_model_name_or_path: Qwen/Qwen3-4B
+  device_map: cuda
+  trust_remote_code: true
+  torch_dtype: torch.float16
+
+ue_layer:
+  path: ''
+  # Keep the published training setting. This can be tuned on train folds in a
+  # later ablation, but must not be selected using the held-out test labels.
+  pos_weight: 3
+  output_attention: true
+  head_cfg:
+    head_type: luh
+    feature_extractor:
+    - name: luh.feature_extractors.basic_attention
+      layer_nums: all
+      attn_history_sz: 3
+      pool: false
+    - name: luh.feature_extractors.token_probabilities
+      top_n: 4
+    uncertainty_head:
+      head_dim: 768
+      n_layers: 2
+      n_heads: 8
+      dropout: 0.1
+
+dataset:
+  path: ./benchmark/cache/uhead/halueval_qwen3_4b_frozen_90_5_5
+  num_instances: 0
+  # Adapter supplies train and development only; reserved test is excluded.
+  test_size: 0  # Predefined validation split; no random holdout.
+  validation: validation
+
+training_arguments:
+  num_train_epochs: 10
+  learning_rate: 0.0001
+  warmup_ratio: 0.05
+  weight_decay: 0.1
+  # Full-layer attention maps dominate memory. Effective batch remains 32.
+  gradient_accumulation_steps: 32
+  per_device_train_batch_size: 1
+  max_grad_norm: 1.0
+
+do_train: true
+do_eval: true
+do_hyperopt: false
+do_save_checkpoints: true
+do_save_final_model: true
+save_dir: ./Checkpoints/uq_head_qwen3_4b_halueval_frozen_90_5_5
+report_to: none
+output_dir: ./benchmark/results/raw/uhead_qwen3_4b_halueval_frozen_90_5_5
+do_predict: false

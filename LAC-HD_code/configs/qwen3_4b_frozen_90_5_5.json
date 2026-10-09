@@ -1,0 +1,62 @@
+{
+  "name": "qwen3_4b_frozen_90_5_5",
+  "backbone": {
+    "model_id": "Qwen/Qwen3-4B",
+    "num_hidden_layers": 36,
+    "hidden_size": 2560,
+    "revision": "not recorded in original experiments"
+  },
+  "protocol": "frozen_90_5_5",
+  "purpose": "Primary paper protocol: fixed 90/5/5 dialogue-group split after review and filtering",
+  "train_args": {
+    "model_path": "Qwen/Qwen3-4B",
+    "train_json": "data/halu_eval/token level/dialogue_token_hallucination.json",
+    "split_manifest": "{data_package}/splits/halueval_dialogue_group_90_5_5_seed42.json",
+    "output_dir": "Checkpoints/qwen3_4b_frozen_90_5_5",
+    "max_length": 512,
+    "batch_size": 1,
+    "grad_accum": 8,
+    "epochs": 3,
+    "lr": 0.0001,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.05,
+    "dropout": 0.1,
+    "attn_hidden": 256,
+    "mlp_hidden1": 1024,
+    "mlp_hidden2": 256,
+    "conv_kernel_size": 3,
+    "seed": 42,
+    "dtype": "auto",
+    "pos_weight": 0,
+    "num_workers": 0,
+    "head_type": "base",
+    "report_to": "none"
+  },
+  "input_processing": {
+    "template": "Question / Context:\n{question}\n\nAnswer:\n{answer}",
+    "truncation_side": "right",
+    "padding_side": "right",
+    "ignore_label": -100,
+    "source_label_mapping": "any positive overlap of model token with legacy decoded character spans"
+  },
+  "evaluation": {
+    "token_metrics": [
+      "auprc",
+      "auroc",
+      "best_f1"
+    ],
+    "checkpoint_selection": "maximum development token best_f1",
+    "response_pooling": "max",
+    "matched_dialogue_response_gold": "any positive evaluated token after truncation",
+    "cross_task_response_gold": "upstream dataset response label",
+    "cross_task_truncation_side": "left",
+    "historical_checkpoint_selected_epoch": null,
+    "shared_test_response_labels": "{data_package}/evaluation/test_response_labels.jsonl",
+    "paper_test_label_counts": {
+      "positive": 463,
+      "negative": 528,
+      "positive_to_negative": 28
+    }
+  },
+  "annotation_protocol": "Author-supplied paper Appendix A; see ANNOTATION_PROTOCOL.md"
+}

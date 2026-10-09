@@ -1,0 +1,66 @@
+{
+  "validation_date": "2026-10-09",
+  "python_source_files_parsed": 52,
+  "all_19829_reconstructed_records_equal_on_used_fields": true,
+  "source_fields_compared": [
+    "id",
+    "question",
+    "answer",
+    "label",
+    "source",
+    "tokens",
+    "token_labels"
+  ],
+  "frozen_split_train_dev_test_sizes": [
+    17847,
+    991,
+    991
+  ],
+  "frozen_test_excluded_from_train_and_dev": true,
+  "overlapping_group_manifest_rejected": true,
+  "data_reconstruction": {
+    "reconstructed_records": 19829,
+    "all_retained_question_answer_hashes_verified": true,
+    "token_lengths_and_spans_verified": true,
+    "group_disjoint_partitions_verified": true,
+    "original_file_sha256_matches": true,
+    "source_token_ids_omitted": true,
+    "tokenizer_download_required": false,
+    "preserves_legacy_decode_mismatches": 22
+  },
+  "cross_task_reconstruction": {
+    "qa": {
+      "source_records": 10000,
+      "responses": 20000,
+      "positive_responses": 10000,
+      "all_selected_source_hashes_verified": true
+    },
+    "summarization": {
+      "source_records": 5702,
+      "responses": 11404,
+      "positive_responses": 5702,
+      "all_selected_source_hashes_verified": true
+    },
+    "general": {
+      "source_records": 4507,
+      "responses": 4507,
+      "positive_responses": 815,
+      "all_selected_source_hashes_verified": true
+    }
+  },
+  "training_launcher_dry_run_passed": true,
+  "gpu_training_or_inference_run": false,
+  "dependency_environment_fully_installed_for_training": false,
+  "annotation_protocol_source": "author-supplied paper Appendix A",
+  "paper_test_label_counts": {
+    "total": 991,
+    "source_positive": 491,
+    "source_negative": 500,
+    "positive_to_negative": 28,
+    "negative_to_positive": 0,
+    "final_positive": 463,
+    "final_negative": 528
+  },
+  "paper_counts_match_packaged_source_token_aggregates": true,
+  "shared_test_labels_backbone_alignment_verified": false
+}
